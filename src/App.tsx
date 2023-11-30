@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.scss';
 
+import CategoryCard from './components/CategoryCard';
+
 // import usersFromServer from './api/users';
-// import productsFromServer from './api/products';
-// import categoriesFromServer from './api/categories';
+import productsFromServer from './api/products';
+import categoriesFromServer from './api/categories';
+import Products from './components/Products';
 
 export const App: React.FC = () => (
   <div className="container">
@@ -11,12 +14,7 @@ export const App: React.FC = () => (
       <div className="ui content">
         <div className="ui description">
           <p>Grocery - (Anna)</p>
-          
-          <ul className="ui list">
-            <li>Bread</li>
-            <li>Eggs</li>
-            <li>Sugar</li>
-          </ul>
+          <CategoryCard items={categoriesFromServer} />
         </div>
       </div>
     </div>
@@ -25,7 +23,10 @@ export const App: React.FC = () => (
       <div className="ui content">
         <div className="ui description">
           <p>Electronics - (Roma)</p>
-          <b>No products</b>
+          <Products
+            items={productsFromServer}
+            categories={categoriesFromServer}
+          />
         </div>
       </div>
     </div>
